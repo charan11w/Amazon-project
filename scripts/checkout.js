@@ -3,7 +3,7 @@ import { products } from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
 
 
-let cartSummaryHTML;
+let cartSummaryHTML='';
 
 cart.forEach((cartItem) => {
   let productId = cartItem.productId;
@@ -92,11 +92,13 @@ cartSummaryHTML +=
       </div>
     </div>
   </div>
-</div>`
+</div>`;
 });
 
 document.querySelector('.js-order-summary')
 .innerHTML=cartSummaryHTML;
+
+console.log(cartSummaryHTML)
 
 
 document.querySelectorAll('.js-delete-link')
