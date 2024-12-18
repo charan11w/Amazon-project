@@ -4,6 +4,7 @@ import { formatCurrency } from '../utils/money.js';
 import { calculateCartQuantity } from '../../data/cart.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { delivaryOptions , getDelivaryOption} from '../../data/delivaryOptionId.js';
+import { renderPaymentSummay } from './paymentSummary.js';
 
 
 
@@ -18,7 +19,7 @@ export function renderOrderSummary() {
       const delivaryOptionId = cartItem.delivaryOptionId;
 
       const delivaryOption=getDelivaryOption(delivaryOptionId);
-      
+
       const today=dayjs();
       const delivaryDate=today.add(
         delivaryOption.delivaryDays,'days'
@@ -132,6 +133,7 @@ export function renderOrderSummary() {
 
       container.remove();
       updateCartQuantity();
+      renderPaymentSummay();
       })
     })
 
@@ -200,6 +202,7 @@ export function renderOrderSummary() {
         const {productId,delivaryOptionId} = element.dataset;
         updateDelivaryId(productId,delivaryOptionId);
         renderOrderSummary();
+        renderPaymentSummay();
       })
     })
 
