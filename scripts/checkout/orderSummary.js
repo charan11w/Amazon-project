@@ -2,9 +2,9 @@ import { cart,removeFromCart,updateQuantity , updateDelivaryId} from '../../data
 import { products,getProduct } from '../../data/products.js'
 import { formatCurrency } from '../utils/money.js';
 import { calculateCartQuantity } from '../../data/cart.js';
-import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
-import { delivaryOptions , getDelivaryOption} from '../../data/delivaryOptionId.js';
+import { calculateDelivaryDate, delivaryOptions , getDelivaryOption} from '../../data/delivaryOptionId.js';
 import { renderPaymentSummay } from './paymentSummary.js';
+import { renderCheckoutHtml } from './checkoutHeader1.js';
 
 
 
@@ -20,13 +20,8 @@ export function renderOrderSummary() {
 
       const delivaryOption=getDelivaryOption(delivaryOptionId);
 
-      const today=dayjs();
-      const delivaryDate=today.add(
-        delivaryOption.delivaryDays,'days'
-      );
-      const dateString=delivaryDate.format(
-        'dddd , MMMM D'
-      );
+    
+      const dateString=calculateDelivaryDate(delivaryOption);
 
 
 
@@ -83,13 +78,7 @@ export function renderOrderSummary() {
 
       delivaryOptions.forEach((delivaryOption) => {
 
-        const today=dayjs();
-        const delivaryDate=today.add(
-          delivaryOption.delivaryDays,'days'
-        );
-        const dateString=delivaryDate.format(
-          'dddd , MMMM D'
-        );
+        const dateString=calculateDelivaryDate(delivaryOption);
 
         const priceString=delivaryOption.priceCents === 0
           ? 'FREE -'
@@ -134,15 +123,15 @@ export function renderOrderSummary() {
       container.remove();
       updateCartQuantity();
       renderPaymentSummay();
+      renderCheckoutHtml();
       })
     })
 
     updateCartQuantity();
 
     function updateCartQuantity(){
-    let cartQuantity= calculateCartQuantity(cart);
-      document.querySelector('.js-checkout-link').innerHTML=`${cartQuantity} items`;
-    }
+    
+      renderCheckoutHtml();
 
     document.querySelectorAll('.js-update-link')
       .forEach((link) => {
@@ -168,8 +157,8 @@ export function renderOrderSummary() {
           const inputValue=document.querySelector(`.js-quantity-link-${productId}`);
           const newQuantity =Number(inputValue.value);
 
-          if(newQuantity < 0 || newQuantity > 10){
-            alert('maximum quantity is 10 , please update correctly')
+          if(newQuantity <= 0 || newQuantity > 10){
+            alert('minumum quantity is 1 and maximum quantity is 10 , please update correctly')
             return;
           }
 
@@ -186,6 +175,8 @@ export function renderOrderSummary() {
             `.js-delete-container-${productId}`
           );
           container.classList.remove('is-editing-quantity');
+          renderCheckoutHtml();
+          renderPaymentSummay();
       
     }
 
@@ -201,6 +192,7 @@ export function renderOrderSummary() {
       element.addEventListener('click',() => {
         const {productId,delivaryOptionId} = element.dataset;
         updateDelivaryId(productId,delivaryOptionId);
+        renderCheckoutHtml();
         renderOrderSummary();
         renderPaymentSummay();
       })
@@ -208,4 +200,4 @@ export function renderOrderSummary() {
 
   }
 
-  
+}

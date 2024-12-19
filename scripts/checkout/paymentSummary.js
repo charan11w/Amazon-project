@@ -7,6 +7,7 @@ export function renderPaymentSummay(){
 
   let productPriceCents=0;
   let shippingPriceCents=0;
+  let cartCount=0;
 
   cart.forEach((cartItem) => {
     const product = getProduct(cartItem.productId);
@@ -14,6 +15,7 @@ export function renderPaymentSummay(){
 
     const delivaryOption=getDelivaryOption(cartItem.delivaryOptionId);
     shippingPriceCents += delivaryOption.priceCents;
+    cartCount+=cartItem.quantity;
   })
 
   const totalBeforeTaxCents=productPriceCents + shippingPriceCents;
@@ -26,7 +28,7 @@ export function renderPaymentSummay(){
           </div>
 
           <div class="payment-summary-row">
-            <div>Items (3):</div>
+            <div>Items (${cartCount}):</div>
             <div class="payment-summary-money">$${formatCurrency(productPriceCents)}</div>
           </div>
 
