@@ -1,4 +1,4 @@
-import { addToCart,cart,loadFromStorage} from "../../data/cart.js";
+import { addToCart,cart,loadFromStorage} from "./cartFake.js";
 
 
 
