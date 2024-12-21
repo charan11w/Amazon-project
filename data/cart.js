@@ -38,12 +38,11 @@ export function addToCart (productId) {
    const quantity=Number(quantitySelector.value);
 
    if(matchingItem){
-     matchingItem.quantity += quantity;
-    
+     matchingItem.quantity += quantity; 
   }else{
     cart.push({
       productId,
-      quantity:1,
+      quantity,
       delivaryOptionId : '1'
     });
   }
