@@ -1,9 +1,13 @@
 import { cart,addToCart } from '../data/cart.js';
-import { products } from '../data/products.js';
+import { products , loadproducts } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 import { calculateCartQuantity } from '../data/cart.js';
 
-let productHtml='';
+
+loadproducts(renderProductsGrid);
+
+function renderProductsGrid(){
+  let productHtml='';
 products.forEach((product) => {
   productHtml +=`
   <div class="product-container">
@@ -103,3 +107,4 @@ document.querySelectorAll('.js-add-to-cart')
     
   })
 })
+}
