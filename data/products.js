@@ -73,7 +73,7 @@ export function loadproducts(fun){
       }
       return new Product(productItem);
     })
-    console.log(products);
+    console.log('load-products')
     fun();
   })
  
