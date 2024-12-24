@@ -63,7 +63,7 @@ export function getProduct(productId){
 export let products = [];
 
 
-export function loadProductsFetch(){
+export function loadProductsFetch(fun){
   let promise=fetch('https://supersimplebackend.dev/products').then((response) => {
     return response.json();
   }).then((productDetails) => {
@@ -74,8 +74,9 @@ export function loadProductsFetch(){
       }
       return new Product(productItem);
     })
+    fun();
    }).catch(() => {
-   console.log('error thambi')
+   
   })
   return promise;
 }

@@ -1,10 +1,10 @@
 import { cart,addToCart } from '../data/cart.js';
-import { products , loadproducts } from '../data/products.js';
+import { products , loadProductsFetch} from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 import { calculateCartQuantity } from '../data/cart.js';
 
 
-loadproducts(renderProductsGrid);
+loadProductsFetch(renderProductsGrid);
 
 function renderProductsGrid(){
   let productHtml='';
