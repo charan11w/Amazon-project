@@ -62,6 +62,26 @@ export function getProduct(productId){
 
 export let products = [];
 
+
+export function loadProductsFetch(){
+  let promise=fetch('https://supersimplebackend.dev/products').then((response) => {
+    return response.json();
+  }).then((productDetails) => {
+    products=productDetails.map((productItem) => {
+
+      if(productItem.type === 'clothing'){
+        return new Clothing(productItem);
+      }
+      return new Product(productItem);
+    })
+  })
+  return promise;
+}
+
+
+//use below code to make xmlhttprequest
+
+/*
 export function loadproducts(fun){
   const xhr=new XMLHttpRequest();
 
@@ -73,14 +93,13 @@ export function loadproducts(fun){
       }
       return new Product(productItem);
     })
-    console.log('load-products')
     fun();
   })
  
   
   xhr.open('GET','https://supersimplebackend.dev/products');
   xhr.send();
-}
+}*/
 
 
 
