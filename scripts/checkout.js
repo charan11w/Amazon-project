@@ -43,6 +43,24 @@ Promise.all([
   renderPaymentSummay();
 })
 
+
+async function loadPage(){
+  await loadProductsFetch();
+
+  await new Promise((resolve) =>{
+    loadCart(() => {
+      resolve();
+    });
+  })
+
+  renderCheckoutHtml();
+  renderOrderSummary();
+  renderPaymentSummay();
+
+}
+
+loadPage();
+
 /*
 new Promise((resolve) =>{
   loadproducts(() => {
