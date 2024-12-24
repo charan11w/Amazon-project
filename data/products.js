@@ -74,6 +74,8 @@ export function loadProductsFetch(){
       }
       return new Product(productItem);
     })
+   }).catch(() => {
+   console.log('error thambi')
   })
   return promise;
 }
@@ -94,6 +96,10 @@ export function loadproducts(fun){
       return new Product(productItem);
     })
     fun();
+  })
+
+  xhr.addEventListener('error',(error) => {
+    console.log('unexpected error')
   })
  
   

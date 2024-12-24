@@ -28,7 +28,7 @@ loadproducts(()=>{
 })
 */
 
-
+/*
 Promise.all([
   loadProductsFetch()
   ,new Promise((resolve) =>{
@@ -43,8 +43,11 @@ Promise.all([
   renderPaymentSummay();
 })
 
+*/
+
 
 async function loadPage(){
+try{
   await loadProductsFetch();
 
   await new Promise((resolve) =>{
@@ -53,12 +56,14 @@ async function loadPage(){
     });
   })
 
+}catch(error)  {
+  console.log('unexpected error please try again');
+}
   renderCheckoutHtml();
   renderOrderSummary();
   renderPaymentSummay();
 
 }
-
 loadPage();
 
 /*
