@@ -102,7 +102,7 @@ document.querySelectorAll('.js-add-to-cart')
     addedMessageTimeouts[productId]=timeoutId;
 
 
-   addToCart(productId);
+   addToCart(productId,'m');
    updateCartQuantity( );
     
   })

@@ -108,10 +108,6 @@ export function loadproducts(fun){
   xhr.send();
 }*/
 
-
-
-
-
 /*
 export const products = [
   {
