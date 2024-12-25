@@ -3,7 +3,7 @@ import { orders } from "../data/orders.js";
 import dayjs from  'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import formatCurrency from "./utils/money.js";
 import { addToCart } from "../data/cart.js";
-
+import { cart } from "../data/cart.js";
 
 async function loadPage() {
   await loadProductsFetch();
@@ -73,8 +73,7 @@ async function loadPage() {
   </div>
 
   <div class="product-actions">
-    <a href="tracking.html?
-      orderId=${order.id}&productId=${product.id}">
+    <a href="tracking.html?orderId=${order.id}&productId=${product.id}">
       <button class="track-package-button button-secondary">
         Track package
       </button>
@@ -89,7 +88,7 @@ async function loadPage() {
    document.querySelectorAll('.js-buy-again').forEach((button) => {
     button.addEventListener('click',() =>{
       addToCart(button.dataset.productId,'s');
-
+      checkQuantity();
       button.innerHTML='Added';
 
       setTimeout(() => {
@@ -100,6 +99,18 @@ async function loadPage() {
       },1000);
     })
    })
+
 }
 
 loadPage();
+checkQuantity();
+function checkQuantity(){
+  let cartCount=0;
+  cart.forEach((cartItem) => {
+    cartCount+=cartItem.quantity;
+  })  
+
+  document.querySelector('.js-cart-quantity1')
+  .innerHTML=`${cartCount}`
+}
+

@@ -7,7 +7,8 @@ class Product{
   image;
   name;
   rating;
-  priceCents
+  priceCents;
+  keywords;
 
   constructor(productItem){
     this.id=productItem.id;
@@ -15,6 +16,7 @@ class Product{
     this.name=productItem.name;
     this.rating=productItem.rating;
     this.priceCents=productItem.priceCents;
+    this.keywords=productItem.keywords;
   }
 
   getStarUrl(){
@@ -64,7 +66,7 @@ export let products = [];
 
 
 export function loadProductsFetch(fun){
-  let promise=fetch('https://supersimplebackend.dev/products').then((response) => {
+  let promise= fetch('https://supersimplebackend.dev/products').then((response) => {
     return response.json();
   }).then((productDetails) => {
     products=productDetails.map((productItem) => {
@@ -74,17 +76,16 @@ export function loadProductsFetch(fun){
       }
       return new Product(productItem);
     })
-    fun();
-   }).catch(() => {
-   
-  })
+    console.log(products)
+    
+   })
   return promise;
 }
 
 
 //use below code to make xmlhttprequest
 
-/*
+
 export function loadproducts(fun){
   const xhr=new XMLHttpRequest();
 
@@ -106,7 +107,7 @@ export function loadproducts(fun){
   
   xhr.open('GET','https://supersimplebackend.dev/products');
   xhr.send();
-}*/
+}
 
 /*
 export const products = [
