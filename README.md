@@ -22,11 +22,11 @@ This is a fully functional **E-Commerce Website** built using **HTML, CSS, and J
 2. Navigate to the project folder:  
    ```sh
    cd Amazon-project
-1. Clone this repository:  
+3. Clone this repository:  
    ```sh
    git clone https://github.com/charan11w/Amazon-project.git
-2. Navigate to the project folder:   
-3.Open index.html in your browser or use a local server.
+4.Open index.html in your browser or use a local server.  
+
 
 ## Future Improvements ✨
 🔹 Payment Gateway Integration: Add support for Stripe, PayPal, etc.
