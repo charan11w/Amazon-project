@@ -28,7 +28,7 @@ This is a fully functional **E-Commerce Website** built using **HTML, CSS, and J
 2. Open index.html in your browser or use a local server:
    ```sh
    cd Amazon-project
-4.Open index.html in your browser or use a local server:
+  
 
 
 ## Future Improvements ✨
