@@ -21,7 +21,11 @@ This is a fully functional **E-Commerce Website** built using **HTML, CSS, and J
    git clone https://github.com/charan11w/Amazon-project.git
 2. Navigate to the project folder:  
    ```sh
-   cd Amazon-project`
+   cd Amazon-project
+1. Clone this repository:  
+   ```sh
+   git clone https://github.com/charan11w/Amazon-project.git
+2. Navigate to the project folder:   
 3.Open index.html in your browser or use a local server.
 
 ## Future Improvements ✨
