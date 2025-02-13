@@ -31,9 +31,9 @@ This is a fully functional **E-Commerce Website** built using **HTML, CSS, and J
 
 
 ## Future Improvements ✨
-🔹 Payment Gateway Integration: Add support for Stripe, PayPal, etc.
-🔹 User Authentication & Authorization: Secure user accounts and sessions.
-🔹 Wishlist & Reviews System: Enhance user engagement with wishlists and product reviews.
+🔹 **Payment Gateway Integration:** Add support for Stripe, PayPal, etc.
+🔹 **User Authentication & Authorization:** Secure user accounts and sessions.
+🔹 **Wishlist & Reviews System:** Enhance user engagement with wishlists and product reviews.
 
 ## Contributing 🤝
 Contributions are welcome! If you'd like to improve this project
